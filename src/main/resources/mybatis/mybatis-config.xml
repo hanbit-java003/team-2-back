@@ -8,7 +8,7 @@
 </settings>
 
 	<typeAliases>
-		<typeAlias alias="thereVO" type="com.hanbit.there.api.vo.ThereVO"/>
+		<typeAlias alias="memberVO" type="com.hanbit.team2.vo.MemberVO"/>
 	</typeAliases>
 
 </configuration>
