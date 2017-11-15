@@ -3,6 +3,8 @@ package com.hanbit.team2.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +29,45 @@ public class MemberController {
 		memberVO.setPassword(password);
 
 		memberService.signUp(memberVO);
+
+		Map result = new HashMap();
+		result.put("status", "ok");
+
+		return result;
+	}
+
+	@PostMapping("/login")
+	public Map logIn(@RequestParam("email") String email, @RequestParam("password") String password, HttpSession session) {
+
+		MemberVO memberVO = memberService.logIn(email, password);
+
+		session.setAttribute("login", true);
+		session.setAttribute("uid", memberVO.getUid());
+		session.setAttribute("email", memberVO.getEmail());
+
+		Map result = new HashMap();
+		result.put("email", memberVO.getEmail());
+
+		return result;
+	}
+
+	@RequestMapping("/get")
+	public Map getMember(HttpSession session) {
+		Map member = new HashMap();
+
+		if (session.getAttribute("login") == null) {
+			member.put("login", false);
+		}
+		else {
+			member.put("login", true);
+			member.put("email", session.getAttribute("email"));
+		}
+		return member;
+	}
+
+	@RequestMapping("/logout")
+	public Map logOut(HttpSession session) {
+		session.invalidate();
 
 		Map result = new HashMap();
 		result.put("status", "ok");

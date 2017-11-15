@@ -19,4 +19,8 @@ public class MemberDAO {
 	public int countMember(String email) {
 		return sqlsession.selectOne("member.countMember", email);
 	}
+
+	public MemberVO selectMember(String email) {
+		return sqlsession.selectOne("member.selectMember", email);
+	}
 }

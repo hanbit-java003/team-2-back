@@ -18,6 +18,9 @@ public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	public void signUp(MemberVO memberVO) {
 		if (memberDAO.countMember(memberVO.getEmail()) > 0) {
 			throw new RuntimeException("이메일 중복입니다");
@@ -25,8 +28,6 @@ public class MemberService {
 
 		memberVO.setUid(generateUid());
 
-		//패스워드 암호화
-		PasswordEncoder passwordEncoder = new StandardPasswordEncoder("animalgo");
 		String encodePassword = passwordEncoder.encode(memberVO.getPassword());
 		memberVO.setPassword(encodePassword);
 
@@ -43,5 +44,19 @@ public class MemberService {
 			uid[i] = CHARS[random.nextInt(CHARS.length)];
 		}
 		return new String(uid);
+	}
+
+	public MemberVO logIn(String email, String password) {
+		MemberVO memberVO = memberDAO.selectMember(email);
+
+		if (memberVO == null) {
+			throw new RuntimeException("이메일이 등록되지 않았거나 비밀번호가 일치하지 않습니다");
+		}
+
+		if (!passwordEncoder.matches(password, memberVO.getPassword())) {
+			throw new RuntimeException("이메일이 등록되지 않았거나 비밀번호가 일치하지 않습니다");
+		}
+
+		return memberVO;
 	}
 }

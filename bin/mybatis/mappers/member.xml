@@ -17,4 +17,10 @@
 			(#{uid}, #{email}, #{password})
 	</insert>
 
+	<select id="selectMember" parameterType="String" resultType="memberVO">
+		SELECT uid, email, password
+		  FROM member
+		 WHERE email = #{email}
+	</select>
+
 </mapper>
