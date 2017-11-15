@@ -12,13 +12,13 @@
 
 	<insert id="insertMember" parameterType="memberVO">
 		INSERT INTO member
-			(uid, email, password)
+			(uid, email, password, nickname)
 		VALUES
-			(#{uid}, #{email}, #{password})
+			(#{uid}, #{email}, #{password}, #{nickname})
 	</insert>
 
 	<select id="selectMember" parameterType="String" resultType="memberVO">
-		SELECT uid, email, password
+		SELECT uid, email, password, nickname
 		  FROM member
 		 WHERE email = #{email}
 	</select>

@@ -22,11 +22,15 @@ public class MemberController {
 	private MemberService memberService;
 
 	@PostMapping("/signup")
-	public Map signUp(@RequestParam("email") String email, @RequestParam("password") String password) {
+	public Map signUp(
+			@RequestParam("email") String email,
+			@RequestParam("password") String password,
+			@RequestParam("nickname") String nickname) {
 
 		MemberVO memberVO = new MemberVO();
 		memberVO.setEmail(email);
 		memberVO.setPassword(password);
+		memberVO.setNickname(nickname);
 
 		memberService.signUp(memberVO);
 
@@ -37,13 +41,17 @@ public class MemberController {
 	}
 
 	@PostMapping("/login")
-	public Map logIn(@RequestParam("email") String email, @RequestParam("password") String password, HttpSession session) {
+	public Map logIn(
+			@RequestParam("email") String email,
+			@RequestParam("password") String password,
+			HttpSession session) {
 
 		MemberVO memberVO = memberService.logIn(email, password);
 
 		session.setAttribute("login", true);
 		session.setAttribute("uid", memberVO.getUid());
 		session.setAttribute("email", memberVO.getEmail());
+		session.setAttribute("nickname", memberVO.getNickname());
 
 		Map result = new HashMap();
 		result.put("email", memberVO.getEmail());
@@ -61,6 +69,7 @@ public class MemberController {
 		else {
 			member.put("login", true);
 			member.put("email", session.getAttribute("email"));
+			member.put("nickname", session.getAttribute("nickname"));
 		}
 		return member;
 	}
