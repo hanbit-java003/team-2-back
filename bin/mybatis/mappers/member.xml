@@ -23,4 +23,11 @@
 		 WHERE email = #{email}
 	</select>
 
+	<insert id="snsInsert" parameterType="memberVO">
+		INSERT INTO member
+			(uid, nickname, memberno)
+		VALUES
+			(#{uid}, #{nickname}, #{memberno})
+	</insert>
+
 </mapper>

@@ -6,6 +6,7 @@ public class MemberVO {
 	private String email;
 	private String password;
 	private String nickname;
+	private String memberno;
 
 	public String getUid() {
 		return uid;
@@ -30,5 +31,11 @@ public class MemberVO {
 	}
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+	public String getMemberno() {
+		return memberno;
+	}
+	public void setMemberno(String memberno) {
+		this.memberno = memberno;
 	}
 }

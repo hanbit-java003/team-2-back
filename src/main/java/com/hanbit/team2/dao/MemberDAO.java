@@ -23,4 +23,8 @@ public class MemberDAO {
 	public MemberVO selectMember(String email) {
 		return sqlsession.selectOne("member.selectMember", email);
 	}
+
+	public int snsInsertMember(MemberVO memberVO) {
+		return sqlsession.insert("member.snsInsert", memberVO);
+	}
 }

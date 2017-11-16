@@ -55,6 +55,24 @@ public class MemberController {
 
 		Map result = new HashMap();
 		result.put("email", memberVO.getEmail());
+		result.put("nickname", memberVO.getNickname());
+
+		return result;
+	}
+
+	@PostMapping("/snssignin")
+	public Map snsLogIn(@RequestParam("nickname") String nickname,
+			 HttpSession session) {
+		MemberVO memberVO = new MemberVO();
+		memberVO.setNickname(nickname);
+
+		memberService.snsSignIn(memberVO);
+
+		session.setAttribute("login", true);
+		session.setAttribute("nickname", memberVO.getNickname());
+
+		Map result = new HashMap();
+		result.put("nickname", memberVO.getNickname());
 
 		return result;
 	}
