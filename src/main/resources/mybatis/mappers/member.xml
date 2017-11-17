@@ -23,11 +23,17 @@
 		 WHERE email = #{email}
 	</select>
 
-	<insert id="snsInsert" parameterType="memberVO">
+	<delete id="deleteMember" parameterType="String">
+		DELETE
+		  FROM member
+		 WHERE email = #{email}
+	</delete>
+
+	<!-- <insert id="snsInsert" parameterType="memberVO">
 		INSERT INTO member
-			(uid, nickname, memberno)
+			(nickname, memberno)
 		VALUES
-			(#{uid}, #{nickname}, #{memberno})
-	</insert>
+			(#{nickname}, #{memberno})
+	</insert> -->
 
 </mapper>
