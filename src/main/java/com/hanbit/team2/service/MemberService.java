@@ -60,17 +60,15 @@ public class MemberService {
 		return memberVO;
 	}
 
-	public MemberVO snsSignIn(MemberVO memberVO) {
-		String encodedNickname = passwordEncoder.encode(memberVO.getNickname());
-		memberVO.setMemberno(encodedNickname);
+	public void dropOut(String email) {
+		MemberVO memberVO = memberDAO.selectMember(email);
 
-		if (memberDAO.countMember(memberVO.getMemberno())>0) {
-			throw new RuntimeException("중복된 회원입니다");
-		}
-		memberVO.setUid(generateUid());
-
-		memberDAO.insertMember(memberVO);
-
-		return null;
+		memberDAO.deleteMember(email);
 	}
+
+//	public MemberVO snsSignIn(MemberVO memberVO) {
+//		memberDAO.insertMember(memberVO);
+//
+//		return null;
+//	}
 }

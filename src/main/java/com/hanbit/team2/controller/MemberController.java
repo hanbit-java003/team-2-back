@@ -66,7 +66,7 @@ public class MemberController {
 		MemberVO memberVO = new MemberVO();
 		memberVO.setNickname(nickname);
 
-		memberService.snsSignIn(memberVO);
+//		memberService.snsSignIn(memberVO);
 
 		session.setAttribute("login", true);
 		session.setAttribute("nickname", memberVO.getNickname());
@@ -100,5 +100,9 @@ public class MemberController {
 		result.put("status", "ok");
 
 		return result;
+	}
+
+	@RequestMapping("/dropout")
+	public void dropOut(HttpSession session) {
 	}
 }
