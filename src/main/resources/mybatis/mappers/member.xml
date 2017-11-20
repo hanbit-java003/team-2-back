@@ -29,11 +29,4 @@
 		 WHERE email = #{email}
 	</delete>
 
-	<!-- <insert id="snsInsert" parameterType="memberVO">
-		INSERT INTO member
-			(nickname, memberno)
-		VALUES
-			(#{nickname}, #{memberno})
-	</insert> -->
-
 </mapper>

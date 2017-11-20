@@ -103,6 +103,16 @@ public class MemberController {
 	}
 
 	@RequestMapping("/dropout")
-	public void dropOut(HttpSession session) {
+	public Map dropOut(HttpSession session) {
+		String email = (String) session.getAttribute("email");
+
+		memberService.dropOut(email);
+
+		session.invalidate();
+
+		Map result = new HashMap();
+		result.put("status", "ok");
+
+		return result;
 	}
 }

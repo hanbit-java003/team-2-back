@@ -28,7 +28,4 @@ public class MemberDAO {
 		return sqlsession.delete("member.deleteMember", email);
 	}
 
-//	public int snsInsertMember(MemberVO memberVO) {
-//		return sqlsession.insert("member.snsInsert", memberVO);
-//	}
 }

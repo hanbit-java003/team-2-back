@@ -66,9 +66,4 @@ public class MemberService {
 		memberDAO.deleteMember(email);
 	}
 
-//	public MemberVO snsSignIn(MemberVO memberVO) {
-//		memberDAO.insertMember(memberVO);
-//
-//		return null;
-//	}
 }
