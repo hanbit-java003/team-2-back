@@ -1,17 +1,24 @@
 package com.hanbit.team2.vo;
 
+import java.util.List;
+
 public class CafeVO {
-	String cafeId;
-	String name;
-	String background;
-	String summary;
-	String areaId;
+	private String id;
+	private String name;
+	private String background;
+	private String summary;
+	private String areaId;
+
+	private List<ImagesVO> images;
+	private List<InfoVO> info;
+	private LocationVO location;
+	private TrafficVO traffic;
 
 	public String getCafeId() {
-		return cafeId;
+		return id;
 	}
 	public void setCafeId(String cafeId) {
-		this.cafeId = cafeId;
+		this.id = cafeId;
 	}
 	public String getName() {
 		return name;
@@ -36,5 +43,29 @@ public class CafeVO {
 	}
 	public void setAreaId(String areaId) {
 		this.areaId = areaId;
+	}
+	public List<ImagesVO> getImages() {
+		return images;
+	}
+	public void setImages(List<ImagesVO> images) {
+		this.images = images;
+	}
+	public List<InfoVO> getInfo() {
+		return info;
+	}
+	public void setInfo(List<InfoVO> info) {
+		this.info = info;
+	}
+	public LocationVO getLocation() {
+		return location;
+	}
+	public void setLocation(LocationVO location) {
+		this.location = location;
+	}
+	public TrafficVO getTraffic() {
+		return traffic;
+	}
+	public void setTraffic(TrafficVO traffic) {
+		this.traffic = traffic;
 	}
 }

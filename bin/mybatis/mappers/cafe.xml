@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cafe">
+	<select id="selectArea" resultType="areaVO">
+		SELECT a.id, a.name
+		  FROM area a LEFT JOIN cafe_list l
+		    ON a.id = l.area_id
+	</select>
+
+	<select id="selectCafe" parameterType="string" resultType="cafeVO">
+		SELECT id, name
+		  FROM cafe_list
+		 WHERE id = #{id}
+	</select>
+
+	<select id="selectImages" parameterType="string" resultType="imagesVO">
+		SELECT image
+		  FROM cafe_images
+		 WHERE id = #{id}
+	</select>
+
+	<select id="selectInfo" parameterType="string" resultType="infoVO">
+		SELECT info
+		  FROM cafe_info
+		 WHERE id = #{id}
+	</select>
+
+	<select id="selectLocation" parameterType="string" resultType="locationVO">
+		SELECT lat, lng
+		  FROM cafe_location
+		 WHERE id = #{id}
+	</select>
+
+	<select id="selectTraffic" parameterType="string" resultType="trafficVO">
+		SELECT bus, subway, car
+		  FROM cafe_traffic
+		 WHERE id = #{id}
+	</select>
+
+	<select id="selectCafeList" parameterType="string" resultType="cafeVO">
+		SELECT id, area_id, name, summary, background
+		  FROM cafe_list
+		 WHERE area_id = #{areaId}
+	</select>
+</mapper>
