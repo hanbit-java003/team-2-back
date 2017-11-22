@@ -15,6 +15,7 @@
 		<typeAlias alias="locationVO" type="com.hanbit.team2.vo.LocationVO"/>
 		<typeAlias alias="trafficVO" type="com.hanbit.team2.vo.TrafficVO"/>
 		<typeAlias alias="areaVO" type="com.hanbit.team2.vo.AreaVO"/>
+		<typeAlias alias="clinicVO" type="com.hanbit.team2.vo.ClinicVO"/>
 	</typeAliases>
 
 </configuration>
