@@ -9,6 +9,13 @@
 
 	<typeAliases>
 		<typeAlias alias="memberVO" type="com.hanbit.team2.vo.MemberVO"/>
+		<typeAlias alias="cafeVO" type="com.hanbit.team2.vo.CafeVO"/>
+		<typeAlias alias="imagesVO" type="com.hanbit.team2.vo.ImagesVO"/>
+		<typeAlias alias="infoVO" type="com.hanbit.team2.vo.InfoVO"/>
+		<typeAlias alias="locationVO" type="com.hanbit.team2.vo.LocationVO"/>
+		<typeAlias alias="trafficVO" type="com.hanbit.team2.vo.TrafficVO"/>
+		<typeAlias alias="areaVO" type="com.hanbit.team2.vo.AreaVO"/>
+		<typeAlias alias="clinicVO" type="com.hanbit.team2.vo.ClinicVO"/>
 	</typeAliases>
 
 </configuration>

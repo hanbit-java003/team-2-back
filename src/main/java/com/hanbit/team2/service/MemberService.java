@@ -59,4 +59,11 @@ public class MemberService {
 
 		return memberVO;
 	}
+
+	public void dropOut(String email) {
+		MemberVO memberVO = memberDAO.selectMember(email);
+
+		memberDAO.deleteMember(email);
+	}
+
 }

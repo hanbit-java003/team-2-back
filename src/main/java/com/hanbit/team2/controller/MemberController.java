@@ -55,6 +55,24 @@ public class MemberController {
 
 		Map result = new HashMap();
 		result.put("email", memberVO.getEmail());
+		result.put("nickname", memberVO.getNickname());
+
+		return result;
+	}
+
+	@PostMapping("/snssignin")
+	public Map snsLogIn(@RequestParam("nickname") String nickname,
+			 HttpSession session) {
+		MemberVO memberVO = new MemberVO();
+		memberVO.setNickname(nickname);
+
+//		memberService.snsSignIn(memberVO);
+
+		session.setAttribute("login", true);
+		session.setAttribute("nickname", memberVO.getNickname());
+
+		Map result = new HashMap();
+		result.put("nickname", memberVO.getNickname());
 
 		return result;
 	}
@@ -76,6 +94,20 @@ public class MemberController {
 
 	@RequestMapping("/logout")
 	public Map logOut(HttpSession session) {
+		session.invalidate();
+
+		Map result = new HashMap();
+		result.put("status", "ok");
+
+		return result;
+	}
+
+	@RequestMapping("/dropout")
+	public Map dropOut(HttpSession session) {
+		String email = (String) session.getAttribute("email");
+
+		memberService.dropOut(email);
+
 		session.invalidate();
 
 		Map result = new HashMap();

@@ -23,4 +23,9 @@ public class MemberDAO {
 	public MemberVO selectMember(String email) {
 		return sqlsession.selectOne("member.selectMember", email);
 	}
+
+	public int deleteMember(String email) {
+		return sqlsession.delete("member.deleteMember", email);
+	}
+
 }
