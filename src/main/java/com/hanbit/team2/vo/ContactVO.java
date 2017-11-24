@@ -5,7 +5,7 @@ public class ContactVO {
 	private String email;
 	private String name;
 	private String title;
-	private String message;
+	private String text;
 
 	public String getEmail() {
 		return email;
@@ -25,10 +25,10 @@ public class ContactVO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getMessage() {
-		return message;
+	public String getText() {
+		return text;
 	}
-	public void setMessage(String message) {
-		this.message = message;
+	public void setText(String text) {
+		this.text = text;
 	}
 }
