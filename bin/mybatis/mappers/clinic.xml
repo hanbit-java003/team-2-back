@@ -3,10 +3,22 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="clinic">
-	<select id="selectClinic" parameterType="string" resultType="clinicVO">
-		SELECT area, name, clinic_name, lat, lng, telephone, address
-			FROM clinic
-		  WHERE id = #{id}
+
+	<select id="selectArea" resultType="areaVO">
+		SELECT a.id, a.name
+		  FROM area a LEFT JOIN clinic_location c
+		    ON a.id = c.area_id
 	</select>
 	
+	<select id="selectClinicList" parameterType="string" resultType="clinicVO">
+		SELECT id, area_id, name, telephone, address
+		  FROM clinic_location
+		 WHERE area_id = #{areaId}
+	</select>
+	
+	<select id="selectClinic" parameterType="string" resultType="clinicVO">
+		SELECT id, area_id, name, lat, lng, telephone, address
+		  FROM clinic_location
+		 WHERE id = #{id} 
+	</select>
 </mapper>

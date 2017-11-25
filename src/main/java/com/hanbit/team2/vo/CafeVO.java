@@ -14,11 +14,11 @@ public class CafeVO {
 	private LocationVO location;
 	private TrafficVO traffic;
 
-	public String getCafeId() {
+	public String getId() {
 		return id;
 	}
-	public void setCafeId(String cafeId) {
-		this.id = cafeId;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;

@@ -20,8 +20,8 @@ public class CafeController {
 	private CafeService cafeService;
 
 	@RequestMapping("/{cafeId}")
-	public CafeVO getCafe(@PathVariable("cafeId") String cafeId) {
-		return cafeService.getCafe(cafeId);
+	public CafeVO getCafe(@PathVariable("cafeId") String id) {
+		return cafeService.getCafe(id);
 	}
 
 	@RequestMapping("/area")

@@ -2,19 +2,26 @@ package com.hanbit.team2.vo;
 
 public class ClinicVO {
 
-	private String area;
+	private String id;
 	private String name;
 	private String clinicname;
 	private double lat;
 	private double lng;
-	private double telephone;
+	private String telephone;
 	private String address;
+	private String areaId;
 	
-	public String getArea() {
-		return area;
+	public String getAreaId() {
+		return areaId;
 	}
-	public void setArea(String area) {
-		this.area = area;
+	public void setAreaId(String areaId) {
+		this.areaId = areaId;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getClinicname() {
 		return clinicname;
@@ -34,10 +41,10 @@ public class ClinicVO {
 	public void setLng(double lng) {
 		this.lng = lng;
 	}
-	public double getTelephone() {
+	public String getTelephone() {
 		return telephone;
 	}
-	public void setTelephone(double telephone) {
+	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 	public String getAddress() {
