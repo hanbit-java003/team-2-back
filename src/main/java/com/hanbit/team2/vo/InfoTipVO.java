@@ -1,6 +1,6 @@
 package com.hanbit.team2.vo;
 
-public class ShowoffVO {
+public class InfoTipVO {
 
 	private int no;
 	private String nickname;
