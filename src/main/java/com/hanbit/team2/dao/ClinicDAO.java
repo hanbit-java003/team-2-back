@@ -11,19 +11,19 @@ import com.hanbit.team2.vo.ClinicVO;
 
 @Repository
 public class ClinicDAO {
-	
+
 	@Autowired
 	private SqlSession sqlsession;
-	
+
 	public List<AreaVO> selectArea() {
 		return sqlsession.selectList("clinic.selectArea");
 	}
-	
+
 	public List<ClinicVO> selectClinicList(String areaId) {
 		return sqlsession.selectList("clinic.selectClinicList", areaId);
 	}
-	
-	public ClinicVO selectClinic(String id) {
-		return sqlsession.selectOne("clinic.selectClinic", id);
+
+	public List<ClinicVO> selectClinic(String id) {
+		return sqlsession.selectList("clinic.selectClinic", id);
 	}
 }

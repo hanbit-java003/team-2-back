@@ -14,16 +14,16 @@ public class ClinicService {
 
 	@Autowired
 	private ClinicDAO clinicDAO;
-	
+
 	public List<AreaVO> listArea() {
 		return clinicDAO.selectArea();
 	}
-	
+
 	public List<ClinicVO> listClinic(String areaId) {
 		return clinicDAO.selectClinicList(areaId);
 	}
-	
-	public ClinicVO getClinic(String id) {
+
+	public List<ClinicVO> getClinic(String id) {
 		return clinicDAO.selectClinic(id);
 	}
 }

@@ -1,11 +1,7 @@
 package com.hanbit.team2.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Properties;
 
-import javax.mail.Address;
-import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -14,9 +10,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -45,7 +38,6 @@ public class ContactController {
 		contactVO.setText(subject);
 
 		sender = request.getParameter("sender");
-		title = contactVO.getTitle();
 		name = contactVO.getName();
 
 		System.out.println(sender);

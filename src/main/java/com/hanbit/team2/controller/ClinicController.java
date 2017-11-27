@@ -15,7 +15,7 @@ import com.hanbit.team2.vo.ClinicVO;
 @RestController
 @RequestMapping("/api/clinic")
 public class ClinicController {
-	
+
 	@Autowired
 	private ClinicService clinicService;
 
@@ -23,14 +23,14 @@ public class ClinicController {
 	public List<AreaVO> listArea() {
 		return clinicService.listArea();
 	}
-	
+
 	@RequestMapping("/list")
 	public List<ClinicVO> listClinic(@RequestParam("areaId") String areaId) {
 		return clinicService.listClinic(areaId);
 	}
-	
+
 	@RequestMapping("/{clinicId}")
-	public ClinicVO getClinic(@PathVariable("clinicId") String id) {
+	public List<ClinicVO> getClinic(@PathVariable("clinicId") String id) {
 		return clinicService.getClinic(id);
 	}
 }
