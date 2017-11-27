@@ -10,39 +10,39 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.stereotype.Service;
 
-import com.hanbit.team2.dao.ShowoffDAO;
+import com.hanbit.team2.dao.InfoTipDAO;
 import com.hanbit.team2.service.FileService;
 import com.hanbit.team2.vo.FileVO;
-import com.hanbit.team2.vo.ShowoffVO;
+import com.hanbit.team2.vo.InfoTipVO;
 
 
 @Service
-public class ShowoffService {
+public class InfoTipService {
 	
 	@Autowired
-	private ShowoffDAO showoffDAO;
+	private InfoTipDAO infotipDAO;
 	
 	@Autowired
 	private FileService fileService;
 	
-	public List<ShowoffVO> getShowoff (int no) {
-		return showoffDAO.selectShowoff(no);
+	public List<InfoTipVO> getInfotip (int no) {
+		return infotipDAO.selectInfotip(no);
 	}
 	
-	public void addAritcle(ShowoffVO showoffVO) {
-		int no = showoffDAO.selectNextNo();
-		showoffVO.setNo(no);
+	public void addAritcle(InfoTipVO infotipVO) {
+		int no = infotipDAO.selectNextNo();
+		infotipVO.setNo(no);
 		
-		showoffDAO.insertShowoff(showoffVO);
+		infotipDAO.insertInfotip(infotipVO);
 	}
 	
-	public void editArticle(ShowoffVO showoffVO) {
-		showoffDAO.updateArticle(showoffVO);
+	public void editArticle(InfoTipVO infotipVO) {
+		infotipDAO.updateArticle(infotipVO);
 	}
 	
 	@Transactional
 	public void removeArticle(int no) {		
-		showoffDAO.deleteArticle(no);
+		infotipDAO.deleteArticle(no);
 	}
 
 
