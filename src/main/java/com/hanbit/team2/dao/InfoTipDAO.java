@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Repository;
 
-import com.hanbit.team2.vo.ShowoffVO;
+import com.hanbit.team2.vo.InfoTipVO;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,29 +18,31 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class ShowoffDAO {
+public class InfoTipDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<ShowoffVO> selectShowoff (int no) {
-		return sqlSession.selectList("showoff.selectShowoff", no);
+	public List<InfoTipVO> selectInfotip (int no) {
+		return sqlSession.selectList("infotip.selectInfotip", no);
 	}
 	
 	public int selectNextNo() {
-		return sqlSession.selectOne("showoff.selectNextNo");
+		return sqlSession.selectOne("infotip.selectNextNo");
 	}
 	
 	public int deleteArticle(int no) {
-		return sqlSession.delete("showoff.deleteArticle", no);
+		return sqlSession.delete("infotip.deleteArticle", no);
 	}
 	
-	public int updateArticle (ShowoffVO showoffVO) {
-		return sqlSession.selectOne("showoff.updateArticle", showoffVO);
+	public int updateArticle (InfoTipVO infotipVO) {
+		return sqlSession.selectOne("infotip.updateArticle", infotipVO);
 	}
 	
-	public int insertShowoff (ShowoffVO showoffVO) {
-		return sqlSession.insert("showoff.insertShowoff", showoffVO);
+	public int insertInfotip (InfoTipVO infotipVO) {
+		return sqlSession.insert("infotip.insertInfotip", infotipVO);
 	}
+
+
 
 }
