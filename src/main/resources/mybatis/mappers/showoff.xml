@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="showoff">
+	 <select id="selectShowoff" parameterType="int" resultType="showOffVO">
+		SELECT no, title, nickname, cont, update
+		  FROM showoff
+		 WHERE no = #{no}
+	 </select>
+	 
+	 <select id="selectNextNo" resultType="int">
+	  	SELECT IFNULL(MAX(no), 0) + 1
+	  	  FROM showoff
+  </select>
+	 
+	 <insert id="insertShowoff" parameterType="showoffVO">
+	 	INSERT INTO showoff
+	 			(no, title, nickname, cont, date)
+	 	VALUES
+	 		(#{no}, #{title}, #{nickname}, #{cont}, NOW())
+	 </insert>
+	 
+	 <update id="updateArticle" parameterType="showoffVO">
+		UPDATE showoff
+		   SET title = #{title},
+		   	   nickname = #{nickname},
+		   	   cont = #{cont}
+		 WHERE no = #{no}
+     </update>
+     
+     <delete id="deleteArticle" parameterType="int">
+	  	DELETE
+	  	  FROM showoff
+	  	 WHERE no = #{no}
+  </delete>
+
+</mapper>
