@@ -17,6 +17,8 @@
 		<typeAlias alias="areaVO" type="com.hanbit.team2.vo.AreaVO"/>
 		<typeAlias alias="clinicVO" type="com.hanbit.team2.vo.ClinicVO"/>
 		<typeAlias alias="fileVO" type="com.hanbit.team2.vo.FileVO"/>
+		<typeAlias alias="showoffVO" type="com.hanbit.team2.vo.ShowoffVO"/>
+		<typeAlias alias="infotipVO" type="com.hanbit.team2.vo.InfoTipVO"/>
 	</typeAliases>
 
 </configuration>

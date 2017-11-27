@@ -2,27 +2,27 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="showoff">
-	 <select id="selectShowoff" parameterType="int" resultType="showOffVO">
+<mapper namespace="infotip">
+	 <select id="selectInfotip" parameterType="int" resultType="infotipVO">
 		SELECT no, title, nickname, cont, update
-		  FROM showoff
+		  FROM infotip
 		 WHERE no = #{no}
 	 </select>
 	 
 	 <select id="selectNextNo" resultType="int">
 	  	SELECT IFNULL(MAX(no), 0) + 1
-	  	  FROM showoff
+	  	  FROM infotip
   </select>
 	 
-	 <insert id="insertShowoff" parameterType="showoffVO">
-	 	INSERT INTO showoff
-	 			(no, title, nickname, cont, update)
+	 <insert id="insertInfotip" parameterType="infotipVO">
+	 	INSERT INTO infotip
+	 			(no, title, nickname, cont, date)
 	 	VALUES
 	 		(#{no}, #{title}, #{nickname}, #{cont}, NOW())
 	 </insert>
 	 
-	 <update id="updateArticle" parameterType="showoffVO">
-		UPDATE showoff
+	 <update id="updateArticle" parameterType="infotipVO">
+		UPDATE infotip
 		   SET title = #{title},
 		   	   nickname = #{nickname},
 		   	   cont = #{cont}
@@ -31,7 +31,7 @@
      
      <delete id="deleteArticle" parameterType="int">
 	  	DELETE
-	  	  FROM showoff
+	  	  FROM infotip
 	  	 WHERE no = #{no}
   </delete>
 
