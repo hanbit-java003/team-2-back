@@ -24,17 +24,17 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hanbit.team2.service.ShowoffService;
-import com.hanbit.team2.vo.ShowoffVO;
+import com.hanbit.team2.service.InfoTipService;
+import com.hanbit.team2.vo.InfoTipVO;
 import com.hanbit.team2.service.FileService;
 import com.hanbit.team2.vo.FileVO;
 
 @RestController
-@RequestMapping("/api/showoff")
-public class ShowoffController {
+@RequestMapping("/api/infotip")
+public class InfoTipController {
 
 	@Autowired
-	private ShowoffService showoffService;
+	private InfoTipService infotipService;
 
 	@Autowired
 	private FileService fileService;
@@ -42,13 +42,13 @@ public class ShowoffController {
 	private ObjectMapper mapper = new ObjectMapper();
 	
 	@RequestMapping("/list")
-	public List<ShowoffVO> getShowOff (@RequestParam("no") int no) {
-		return showoffService.getShowoff(no);
+	public List<InfoTipVO> getShowOff (@RequestParam("no") int no) {
+		return infotipService.getInfotip(no);
 	}
 	
 	@RequestMapping("/detail")
-	public List<ShowoffVO> getShowOffDetail (@RequestParam("no") int no) {
-		return showoffService.getShowoff(no);
+	public List<InfoTipVO> getShowOffDetail (@RequestParam("no") int no) {
+		return infotipService.getInfotip(no);
 	}
 	
 	@RequestMapping(value="/save", method=RequestMethod.POST)
@@ -58,19 +58,19 @@ public class ShowoffController {
 			@RequestParam("cont") String cont,
 			HttpServletRequest request) {
 		
-		ShowoffVO showoffVO = new ShowoffVO();
-		showoffVO.setTitle(title);
-		showoffVO.setNickname(nickname);
-		showoffVO.setCont(cont);
+		InfoTipVO infotipVO = new InfoTipVO();
+		infotipVO.setTitle(title);
+		infotipVO.setNickname(nickname);
+		infotipVO.setCont(cont);
 		
 		if (StringUtils.isEmpty(request.getParameter("no"))) {
-			showoffService.addAritcle(showoffVO);
+			infotipService.addAritcle(infotipVO);
 		}
 		else {
 			int no = Integer.parseInt(request.getParameter("no"));
-			showoffVO.setNo(no);
+			infotipVO.setNo(no);
 			
-			showoffService.editArticle(showoffVO);
+			infotipService.editArticle(infotipVO);
 		}
 		
 		Map result = new HashMap();
@@ -82,7 +82,7 @@ public class ShowoffController {
 	@ResponseBody
 	public Map delete(@RequestParam("no") int no) {
 		
-		showoffService.removeArticle(no);
+		infotipService.removeArticle(no);
 		
 		Map result = new HashMap();
 		result.put("status", "ok");
