@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartRequest;
+
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hanbit.team2.service.FileService;
 import com.hanbit.team2.service.ShowoffService;
@@ -42,32 +46,48 @@ public class ShowoffController {
 
 	@RequestMapping(value="/save", method=RequestMethod.POST)
 	@ResponseBody
-	public Map save(@RequestParam("title") String title,
-			@RequestParam("nickname") String nickname,
-			@RequestParam("cont") String cont,
-			HttpServletRequest request,
-			MultipartFile image) throws Exception {
+	public Map save(@RequestParam("model") String model,
+			@RequestParam("photos") List<MultipartFile> photos,
+			MultipartRequest request) throws Exception {
 
-		ShowoffVO showoffVO = new ShowoffVO();
-		showoffVO.setTitle(title);
-		showoffVO.setNickname(nickname);
-		showoffVO.setCont(cont);
-		showoffVO.setFileimg(image);
+		ShowoffVO showoffVO = mapper.readValue(model, ShowoffVO.class);
 
-		if (StringUtils.isEmpty(request.getParameter("no"))) {
-			showoffService.addAritcle(showoffVO, image);
-		}
-		else {
-			int no = Integer.parseInt(request.getParameter("no"));
-			showoffVO.setNo(no);
-
-			showoffService.editArticle(showoffVO);
-		}
+		showoffService.addAritcle(showoffVO, photos);
 
 		Map result = new HashMap();
 		result.put("status", "ok");
+
 		return result;
+
 	}
+
+
+//	public Map save(@RequestParam("title") String title,
+//			@RequestParam("nickname") String nickname,
+//			@RequestParam("cont") String cont,
+//			HttpServletRequest request,
+//			MultipartFile image) throws Exception {
+//
+//		ShowoffVO showoffVO = new ShowoffVO();
+//		showoffVO.setTitle(title);
+//		showoffVO.setNickname(nickname);
+//		showoffVO.setCont(cont);
+//		showoffVO.setFileimg(image);
+//
+//		if (StringUtils.isEmpty(request.getParameter("no"))) {
+//			showoffService.addAritcle(showoffVO, image);
+//		}
+//		else {
+//			int no = Integer.parseInt(request.getParameter("no"));
+//			showoffVO.setNo(no);
+//
+//			showoffService.editArticle(showoffVO);
+//		}
+//
+//		Map result = new HashMap();
+//		result.put("status", "ok");
+//		return result;
+//	}
 
 	@RequestMapping("/delete")
 	@ResponseBody

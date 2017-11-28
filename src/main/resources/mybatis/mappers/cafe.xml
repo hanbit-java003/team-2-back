@@ -7,6 +7,8 @@
 		SELECT a.id, a.name
 		  FROM area a LEFT JOIN cafe_list l
 		    ON a.id = l.area_id
+	  GROUP BY l.area_id
+	  ORDER BY area_order;
 	</select>
 
 	<select id="selectCafe" parameterType="string" resultType="cafeVO">

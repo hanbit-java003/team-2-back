@@ -13,19 +13,19 @@ public class FileDAO {
 	private SqlSession sqlSession;
 
 	public FileVO selectFile(String fileId) {
-		return sqlSession.selectOne("file.selectFile", fileId);
+		return sqlSession.selectOne("fileimg.selectFile", fileId);
 	}
 
 	public int insertFile(FileVO fileVO) {
-		return sqlSession.insert("file.insertFile", fileVO);
+		return sqlSession.insert("fileimg.insertFile", fileVO);
 	}
 
 	public int replaceFile(FileVO fileVO) {
-		return sqlSession.insert("file.replaceFile", fileVO);
+		return sqlSession.insert("fileimg.replaceFile", fileVO);
 	}
 
 	public int deleteFile(String fileId) {
-		return sqlSession.delete("file.deleteFile", fileId);
+		return sqlSession.delete("fileimg.deleteFile", fileId);
 	}
 
 }

@@ -1,23 +1,25 @@
 package com.hanbit.team2.vo;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class ShowoffVO {
 
 	private int no;
 	private String nickname;
-	private String pw;
+	private String password;
 	private String title;
 	private String cont;
-	private MultipartFile fileimg;
-	private int date;
+	private List<String> fileimg;
+	private int dateDT;
 
 
-	public int getDate() {
-		return date;
+	public int getdateDT() {
+		return dateDT;
 	}
-	public void setDate(int date) {
-		this.date = date;
+	public void setdateDT(int dateDT) {
+		this.dateDT = dateDT;
 	}
 	public int getNo() {
 		return no;
@@ -31,11 +33,11 @@ public class ShowoffVO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public String getPw() {
-		return pw;
+	public String getPassword() {
+		return password;
 	}
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getTitle() {
 		return title;
@@ -49,10 +51,10 @@ public class ShowoffVO {
 	public void setCont(String cont) {
 		this.cont = cont;
 	}
-	public MultipartFile getFileimg() {
+	public List<String> getFileimg() {
 		return fileimg;
 	}
-	public void setFileimg(MultipartFile image) {
+	public void setFileimg(List<String> image) {
 		this.fileimg = image;
 	}
 

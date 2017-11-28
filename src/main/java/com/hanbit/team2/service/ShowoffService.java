@@ -1,6 +1,7 @@
 package com.hanbit.team2.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.FilenameUtils;
@@ -29,26 +30,36 @@ public class ShowoffService {
 		return showoffDAO.selectShowoff(no);
 	}
 
-	public void addAritcle(ShowoffVO showoffVO, MultipartFile image) throws IOException {
+	@SuppressWarnings("null")
+	public void addAritcle(ShowoffVO showoffVO, List<MultipartFile> photos) throws IOException {
 		int no = showoffDAO.selectNextNo();
 		showoffVO.setNo(no);
 
-		FileVO fileVO = new FileVO();
+		List<String> imgList = new ArrayList();
 
-		String fileId = "showoff-" + showoffVO.getNo() + showoffVO.getDate();
-		fileVO.setFileId(fileId);
+		for (int i=0; i<photos.size(); i++) {
+			MultipartFile image = photos.get(i);
 
-		String fileExt = FilenameUtils.getExtension(image.getOriginalFilename());
-		String fileName = showoffVO.getNo() + showoffVO.getDate() + "." + fileExt;
-		fileVO.setFileName(fileName);
-		fileVO.setFilePath("/hanbit/webpack/animalgo/team-2-front/src/img/showoff" + fileName);
+			String fileName = showoffVO.getTitle() + "_";
+			String fileExt = FilenameUtils.getExtension(image.getOriginalFilename());
+			String fileId = "showoff-" + no + fileName;
+			String filePath = "/hanbit/webpack/animalgo/team-2-front/src/img/showoff" + fileName + "." + fileExt;
 
-		fileVO.setContentType(image.getContentType());
-		fileVO.setContentLength(image.getSize());
+			FileVO fileVO = new FileVO();
+			fileVO.setFileId(fileId);
+			fileVO.setFileName(image.getOriginalFilename());
+			fileVO.setFilePath(filePath);
+			fileVO.setContentType(image.getContentType());
+			fileVO.setContentLength(image.getSize());
 
-		fileService.modifyFile(fileVO, image.getInputStream(), 200);
+			fileService.addFile(fileVO, image.getInputStream());
+			String fileUrl = "/api/file" + fileId;
+			imgList.add(fileUrl);
+		}
 
+		showoffVO.setFileimg(imgList);
 		showoffDAO.insertShowoff(showoffVO);
+
 	}
 
 	public void editArticle(ShowoffVO showoffVO) {
