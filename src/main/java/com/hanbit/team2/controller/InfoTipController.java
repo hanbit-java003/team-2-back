@@ -5,9 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
 
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -40,50 +39,50 @@ public class InfoTipController {
 	private FileService fileService;
 
 	private ObjectMapper mapper = new ObjectMapper();
-	
+
 	@RequestMapping("/list")
-	public List<InfoTipVO> getShowOff (@RequestParam("no") int no) {
+	public List<InfoTipVO> getInfotip (@RequestParam("no") int no) {
 		return infotipService.getInfotip(no);
 	}
-	
+
 	@RequestMapping("/detail")
-	public List<InfoTipVO> getShowOffDetail (@RequestParam("no") int no) {
+	public List<InfoTipVO> getInfotipDetail (@RequestParam("no") int no) {
 		return infotipService.getInfotip(no);
 	}
-	
+
 	@RequestMapping(value="/save", method=RequestMethod.POST)
 	@ResponseBody
 	public Map save(@RequestParam("title") String title,
 			@RequestParam("nickname") String nickname,
 			@RequestParam("cont") String cont,
 			HttpServletRequest request) {
-		
+
 		InfoTipVO infotipVO = new InfoTipVO();
 		infotipVO.setTitle(title);
 		infotipVO.setNickname(nickname);
 		infotipVO.setCont(cont);
-		
+
 		if (StringUtils.isEmpty(request.getParameter("no"))) {
 			infotipService.addAritcle(infotipVO);
 		}
 		else {
 			int no = Integer.parseInt(request.getParameter("no"));
 			infotipVO.setNo(no);
-			
+
 			infotipService.editArticle(infotipVO);
 		}
-		
+
 		Map result = new HashMap();
 		result.put("status", "ok");
 		return result;
 	}
-	
+
 	@RequestMapping("/delete")
 	@ResponseBody
 	public Map delete(@RequestParam("no") int no) {
-		
+
 		infotipService.removeArticle(no);
-		
+
 		Map result = new HashMap();
 		result.put("status", "ok");
 		return result;

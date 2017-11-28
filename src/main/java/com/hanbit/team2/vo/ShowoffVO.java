@@ -1,5 +1,7 @@
 package com.hanbit.team2.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ShowoffVO {
 
 	private int no;
@@ -7,10 +9,10 @@ public class ShowoffVO {
 	private String pw;
 	private String title;
 	private String cont;
-	private String fileimg;
+	private MultipartFile fileimg;
 	private int date;
-	
-	
+
+
 	public int getDate() {
 		return date;
 	}
@@ -47,11 +49,11 @@ public class ShowoffVO {
 	public void setCont(String cont) {
 		this.cont = cont;
 	}
-	public String getFileimg() {
+	public MultipartFile getFileimg() {
 		return fileimg;
 	}
-	public void setFileimg(String fileimg) {
-		this.fileimg = fileimg;
+	public void setFileimg(MultipartFile image) {
+		this.fileimg = image;
 	}
-	
+
 }
