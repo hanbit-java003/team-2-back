@@ -42,12 +42,12 @@ public class InfoTipController {
 	private ObjectMapper mapper = new ObjectMapper();
 	
 	@RequestMapping("/list")
-	public List<InfoTipVO> getShowOff (@RequestParam("no") int no) {
+	public List<InfoTipVO> getInfotip (@RequestParam("no") int no) {
 		return infotipService.getInfotip(no);
 	}
 	
 	@RequestMapping("/detail")
-	public List<InfoTipVO> getShowOffDetail (@RequestParam("no") int no) {
+	public List<InfoTipVO> getInfotipDetail (@RequestParam("no") int no) {
 		return infotipService.getInfotip(no);
 	}
 	
