@@ -3,10 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="showoff">
-	 <select id="selectShowoff" parameterType="int" resultType="showOffVO">
-		SELECT no, title, pw, nickname, cont, dateDT
+	 <select id="selectShowoffList" resultType="showOffVO">
+		SELECT no, title, password, nickname, cont, date_dt
 		  FROM showoff
-		 WHERE no = #{no}
+	 </select>
+
+	 <select id="selectShowoff" parameterType="int" resultType="showOffVO">
+	 	SELECT no, title, nickname, cont, date_dt
+	 	  FROM showoff
+	 	 WHERE no = #{no}
 	 </select>
 
 	 <select id="selectNextNo" resultType="int">

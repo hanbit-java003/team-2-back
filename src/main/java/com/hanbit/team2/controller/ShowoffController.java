@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,13 +35,13 @@ public class ShowoffController {
 
 	private ObjectMapper mapper = new ObjectMapper();
 
-	@RequestMapping("/list")
-	public List<ShowoffVO> getShowOff (@RequestParam("no") int no) {
-		return showoffService.getShowoff(no);
+	@RequestMapping("/")
+	public List<ShowoffVO> getShowOffList () {
+		return showoffService.getShowoffList();
 	}
 
-	@RequestMapping("/detail")
-	public List<ShowoffVO> getShowOffDetail (@RequestParam("no") int no) {
+	@RequestMapping("/{no}")
+	public List<ShowoffVO> getShowOffDetail (@PathVariable("no") int no) {
 		return showoffService.getShowoff(no);
 	}
 

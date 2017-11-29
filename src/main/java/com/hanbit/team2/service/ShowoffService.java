@@ -26,7 +26,11 @@ public class ShowoffService {
 	@Autowired
 	private FileService fileService;
 
-	public List<ShowoffVO> getShowoff (int no) {
+	public List<ShowoffVO> getShowoffList () {
+		return showoffDAO.selectShowoffList();
+	}
+
+	public List<ShowoffVO> getShowoff(int no) {
 		return showoffDAO.selectShowoff(no);
 	}
 
